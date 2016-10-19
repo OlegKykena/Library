@@ -20,85 +20,80 @@ public abstract class  GenericDAOImpl<E> implements GenericDAO<E> {
 	}
 
 	public void add(E element) {
-		// TODO Auto-generated method stub
-		EntityManager EntityManager = JPAUtil.getEntityManager();
+		EntityManager em = JPAUtil.getEntityManager();
 
-		EntityManager.getTransaction().begin();
-		EntityManager.persist(element);
-		EntityManager.getTransaction().commit();
-		EntityManager.close();
+		em.getTransaction().begin();
+		em.persist(element);
+		em.getTransaction().commit();
+		em.close();
 
 	}
 
 	public E find(int id) {
-		// TODO Auto-generated method stub
-		EntityManager EntityManager = JPAUtil.getEntityManager();
+		EntityManager em = JPAUtil.getEntityManager();
 
 		E element = null;
-		EntityManager.getTransaction().begin();
+		em.getTransaction().begin();
 
-		element = (E) EntityManager.find(Element, id);
+		element = (E) em.find(Element, id);
 
-		EntityManager.getTransaction().commit();
-		EntityManager.close();
+		em.getTransaction().commit();
+		em.close();
 
 		return element;
 	}
 
 	public void delete(int id) {
-		// TODO Auto-generated method stub
-		EntityManager EntityManager = JPAUtil.getEntityManager();
+		EntityManager em = JPAUtil.getEntityManager();
 		E element = null;
 
-		EntityManager.getTransaction().begin();
-		element = (E) EntityManager.find(Element, id);
-		EntityManager.remove(element);
-		EntityManager.getTransaction().commit();
-		EntityManager.close();
+		em.getTransaction().begin();
+		element = (E) em.find(Element, id);
+		em.remove(element);
+		em.getTransaction().commit();
+		em.close();
 
 	}
 
 	public void delete(E element) {
-		// TODO Auto-generated method stub
 
-		EntityManager EntityManager = JPAUtil.getEntityManager();
+		EntityManager em = JPAUtil.getEntityManager();
 
-		EntityManager.getTransaction().begin();
-		EntityManager.remove(element);
-		EntityManager.getTransaction().commit();
-		EntityManager.close();
+		em.getTransaction().begin();
+		em.remove(element);
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	public void update(E element) {
-		// TODO Auto-generated method stub
-		EntityManager EntityManager = JPAUtil.getEntityManager();
+		EntityManager em = JPAUtil.getEntityManager();
 
-		EntityManager.getTransaction().begin();
+		em.getTransaction().begin();
 		
-		EntityManager.merge(element);
+		em.merge(element);
 
-		EntityManager.getTransaction().commit();
-		EntityManager.close();
+		em.getTransaction().commit();
+		em.close();
 
 	}
 
 	public List<E> findAll() {
 	
-		EntityManager EntityManager = JPAUtil.getEntityManager();
+		EntityManager em = JPAUtil.getEntityManager();
 
 		List<E> elements = new ArrayList<>();
 
-		EntityManager.getTransaction().begin();
+		em.getTransaction().begin();
 
-		CriteriaBuilder criteria = EntityManager.getCriteriaBuilder();
+		CriteriaBuilder criteria = em.getCriteriaBuilder();
 	
-		Query query = EntityManager.createNativeQuery("Select * from "+Element.getSimpleName() , Element);
+		Query query = em.createNativeQuery("Select * from "+Element.getSimpleName() , Element);
 		elements = query.getResultList();
 		System.out.println(elements);
 
 
-		EntityManager.getTransaction().commit();
-		EntityManager.close();
+		em.getTransaction().commit();
+		em.close();
 
 		return elements;
 		
