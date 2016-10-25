@@ -3,7 +3,9 @@ package com.softserve.controller;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.softserve.dao.CustomerDAO;
 import com.softserve.dao.GenreDAO;
+import com.softserve.dao.OrderDAO;
 import com.softserve.entity.Genre;
 import com.softserve.service.GenreService;
 
@@ -16,9 +18,10 @@ public class Main {
 	public static void main(String[] args) {
 
 		//GenreService genreService = context.getBean(GenreService.class);
-		GenreDAO dao = context.getBean(GenreDAO.class);
-		System.out.println(dao.findById(1));
-		context.close();
+		OrderDAO dao  = context.getBean(OrderDAO.class);
+		System.out.println(dao.findById(2));
+	
+
 	}
 
 }

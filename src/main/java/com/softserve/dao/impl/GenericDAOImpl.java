@@ -43,10 +43,10 @@ public abstract class GenericDAOImpl<T, ID> implements GenericDAO<T, ID>{
 		return entityManager.find(clazz, id);
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public List<T> findAll() {
-		return entityManager.createQuery("from " + clazz.getSimpleName()).getResultList();
+		return entityManager.createQuery("from " + clazz.getSimpleName(),clazz).getResultList();
 	}
 
 	
