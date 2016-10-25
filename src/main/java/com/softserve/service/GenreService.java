@@ -3,7 +3,6 @@ package com.softserve.service;
 import java.util.List;
 
 import com.softserve.entity.Genre;
-import com.softserve.entity.Genre;
 
 public interface GenreService {
 

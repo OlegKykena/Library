@@ -29,5 +29,4 @@ public class GenreDAOImpl extends GenericDAOImpl<Genre, Integer>
 		Query query = entityManager.createNativeQuery("SELECT * from genres order by name",Genre.class);
 		return query.getResultList();
 	}
-
 }

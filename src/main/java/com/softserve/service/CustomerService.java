@@ -29,5 +29,4 @@ public interface CustomerService {
 	public int howManyBooksTake(Integer id);
 
 	public int howManyBooksTake(String firstName, String lastName);
-
 }

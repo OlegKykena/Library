@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.softserve.dao.CustomerDAO;
 import com.softserve.entity.Customer;
-import com.softserve.service.CustomerService;
 
 @Repository
 @Transactional
@@ -91,5 +90,6 @@ public class CustomerDAOImpl extends GenericDAOImpl<Customer, Integer>
 		
 		return co.intValue();
 	}
+
 
 }

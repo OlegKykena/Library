@@ -53,7 +53,7 @@ public class Exempliar {
 
 	@Override
 	public String toString() {
-		return "Exemplar [id=" + id + ", isAvaliable=" + isAvaliable + ", book=" + book + "]";
+		return "Exemplar [id=" + id + ", isAvaliable=" + isAvaliable + ", book=" + book.getName() + "]";
 	}
 
 }
