@@ -12,12 +12,6 @@ public class BookController {
 	
 	@Autowired
 	BookService bookService;
-
-	@RequestMapping("/books")
-	public String showBooks(Model model) {
-		model.addAttribute("books" , bookService.findAvailableBooks());
-		return "books";
-	}
 	
 	@RequestMapping("/boo")
 	public String showB() {

@@ -40,4 +40,29 @@ public class BookServiceImpl implements BookService{
 		return findMostPopularBook();
 	}
 
+	@Override
+	public void save(Book book) {
+		bookDAO.save(book);
+	}
+
+	@Override
+	public Book update(Book book) {
+		return bookDAO.update(book);
+	}
+
+	@Override
+	public void delete(Book book) {
+		bookDAO.delete(book);
+	}
+
+	@Override
+	public Book findById(Integer id) {
+		return bookDAO.findById(id);
+	}
+
+	@Override
+	public List<Book> findAll() {
+		return bookDAO.findAll();
+	}
+
 }
