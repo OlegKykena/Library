@@ -19,5 +19,11 @@ public class BookController {
 		return "books";
 	}
 	
+	@RequestMapping("/boo")
+	public String showB() {
+
+		return "boo";
+	}
+	
 	
 }
