@@ -26,4 +26,29 @@ public class ExempliarServiceImpl implements ExempliarService{
 		return exempliarDAO.findBooksCustomerIsReading(customer);
 	}
 
+	@Override
+	public void save(Exempliar exempliar) {
+		exempliarDAO.save(exempliar);
+	}
+
+	@Override
+	public Exempliar update(Exempliar exempliar) {
+		return exempliarDAO.update(exempliar);
+	}
+
+	@Override
+	public void delete(Exempliar exempliar) {
+		exempliarDAO.delete(exempliar);
+	}
+
+	@Override
+	public Exempliar findById(Integer id) {
+		return exempliarDAO.findById(id);
+	}
+
+	@Override
+	public List<Exempliar> findAll() {
+		return exempliarDAO.findAll();
+	}
+
 }

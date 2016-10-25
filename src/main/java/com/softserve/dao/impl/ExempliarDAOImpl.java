@@ -23,6 +23,19 @@ public class ExempliarDAOImpl extends GenericDAOImpl<Exempliar, Integer>
 	protected ExempliarDAOImpl() {
 		super(Exempliar.class);
 	}
+	
+	@Override
+	public Exempliar findById(Integer id) {
+		return entityManager.createQuery("SELECT ex FROM Exempliar ex JOIN fetch "
+				+ "ex.book b WHERE ex.id = :id", Exempliar.class)
+				.setParameter("id", id).getSingleResult();
+	}
+	
+	@Override
+	public List<Exempliar> findAll() {
+		return entityManager.createQuery("SELECT ex FROM Exempliar ex JOIN fetch "
+				+ "ex.book b ", Exempliar.class).getResultList();
+	}
 
 	@Override
 	public List<Exempliar> findReadBooksByCustomer(Customer customer) {
