@@ -17,4 +17,5 @@
 		<property value=".jsp" name="suffix" />
 	</bean>
 
+	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="3600"/>
 </beans>

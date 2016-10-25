@@ -8,10 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.softserve.service.BookService;
 
 @Controller
-public class BookController {
+public class IndexController {
 	
 	@Autowired
-	BookService bookService;
+	private BookService bookService;
+
+	@RequestMapping("/")
+	public String showIndex(){
+		return "index";
+	}
 	
-	
+	@RequestMapping("/books")
+	public String showBooks(Model model) {
+		model.addAttribute("books" , bookService.findAvailableBooks());
+		return "books";
+	}
 }
