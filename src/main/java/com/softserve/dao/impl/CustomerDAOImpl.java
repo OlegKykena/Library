@@ -15,9 +15,8 @@ import com.softserve.entity.Customer;
 
 @Repository
 @Transactional
-public class CustomerDAOImpl extends GenericDAOImpl<Customer, Integer> 
-		implements CustomerDAO{
-	
+public class CustomerDAOImpl extends GenericDAOImpl<Customer, Integer> implements CustomerDAO {
+
 	@PersistenceContext
 	private EntityManager entityManager;
 
@@ -34,10 +33,10 @@ public class CustomerDAOImpl extends GenericDAOImpl<Customer, Integer>
 
 	@Override
 	public boolean isRegistrated(String firstName, String lastName) {
-		Query query = entityManager.
-				createNativeQuery("SELECT registrationDate from customers where firstName = :firstName and lastName = :lastName");
+		Query query = entityManager.createNativeQuery(
+				"SELECT registrationDate from customers where firstName = :firstName and lastName = :lastName");
 		query.setParameter("firstName", firstName);
-		query.setParameter("lastName", lastName);	
+		query.setParameter("lastName", lastName);
 		return query.getSingleResult() != null;
 	}
 
@@ -47,29 +46,31 @@ public class CustomerDAOImpl extends GenericDAOImpl<Customer, Integer>
 				.createNativeQuery("SELECT  DATEDIFF(curdate(),registrationDate) from customers where id = :id");
 		query.setParameter("id", id);
 		BigInteger bigInteger = (BigInteger) query.getSingleResult();
-		
+
 		return bigInteger.intValue();
 	}
 
 	@Override
 	public int howMuchTimeRegistrated(String firstName, String lastName) {
-		Query query = entityManager
-				.createNativeQuery("SELECT  DATEDIFF(curdate(),registrationDate) from customers where firstName = :firstName and lastName = :lastName");
+		Query query = entityManager.createNativeQuery(
+				"SELECT  DATEDIFF(curdate(),registrationDate) from customers where firstName = :firstName and lastName = :lastName");
 		query.setParameter("firstName", firstName);
 		query.setParameter("lastName", lastName);
 		BigInteger bigInteger = (BigInteger) query.getSingleResult();
-		
+
 		return bigInteger.intValue();
-		
+
 	}
 
 	@Override
 	public List<Customer> getListWhoDidNotReturn() {
-		Query query = entityManager.createNativeQuery("SELECT * FROM customers"
-				+ " join orders on customers.id = orders.customer_id where returningDate is null",Customer.class);
-		
+		Query query = entityManager.createNativeQuery(
+				"SELECT * FROM customers"
+						+ " join orders on customers.id = orders.customer_id where returningDate is null",
+				Customer.class);
+
 		return query.getResultList();
-				
+
 	}
 
 	@Override
@@ -77,19 +78,19 @@ public class CustomerDAOImpl extends GenericDAOImpl<Customer, Integer>
 		Query query = entityManager.createNativeQuery("SELECT count(customer_id) from orders where customer_id = :id");
 		query.setParameter("id", id);
 		BigInteger co = (BigInteger) query.getSingleResult();
-		
+
 		return co.intValue();
 	}
 
 	@Override
 	public int howManyBooksTake(String firstName, String lastName) {
-		Query query = entityManager.createNativeQuery("SELECT count(customer_id) from orders where firstName = :firstName and lastName = :lastName");
+		Query query = entityManager.createNativeQuery(
+				"SELECT count(customer_id) from orders where firstName = :firstName and lastName = :lastName");
 		query.setParameter("firstName", firstName);
 		query.setParameter("lastName", lastName);
-        BigInteger co = (BigInteger) query.getSingleResult();
-		
+		BigInteger co = (BigInteger) query.getSingleResult();
+
 		return co.intValue();
 	}
-
 
 }

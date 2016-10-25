@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.softserve.entity.Customer;
 
-public interface CustomerDAO extends GenericDAO<Customer, Integer>{
+public interface CustomerDAO extends GenericDAO<Customer, Integer> {
 
 	 public boolean isRegistrated(Integer id);
 	 

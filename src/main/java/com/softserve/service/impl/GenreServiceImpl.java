@@ -10,8 +10,8 @@ import com.softserve.entity.Genre;
 import com.softserve.service.GenreService;
 
 @Service
-public class GenreServiceImpl implements GenreService{
-	
+public class GenreServiceImpl implements GenreService {
+
 	@Autowired
 	GenreDAO genreDAO;
 
@@ -44,9 +44,5 @@ public class GenreServiceImpl implements GenreService{
 	public List<Genre> getListSortByAlh() {
 		return genreDAO.getListSortByAlh();
 	}
-
-
-	
-	
 
 }
