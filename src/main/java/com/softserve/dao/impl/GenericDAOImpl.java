@@ -49,5 +49,4 @@ public abstract class GenericDAOImpl<T, ID> implements GenericDAO<T, ID>{
 		return entityManager.createQuery("from " + clazz.getSimpleName()).getResultList();
 	}
 
-	
 }

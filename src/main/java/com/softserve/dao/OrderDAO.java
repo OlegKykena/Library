@@ -16,4 +16,7 @@ public interface OrderDAO extends GenericDAO<Order, Integer> {
 	int averageReadingTimeByExempliar(int id);
 
 	int averageReadingTimeByBook(String name);
+
+	List<Order> findAll();
+
 }

@@ -77,7 +77,6 @@ public class OrderDAOImpl extends GenericDAOImpl<Order, Integer> implements Orde
 	}
 
 	@Override
-
 	public Order findById(Integer id) {
 
 		Query query = em
@@ -91,4 +90,5 @@ public class OrderDAOImpl extends GenericDAOImpl<Order, Integer> implements Orde
 		return (Order) query.getSingleResult();
 
 	}
+
 }
